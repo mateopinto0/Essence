@@ -6,7 +6,9 @@ import './App.css'
 import { Item } from './components/Item/Item'
 import { ItemListContainer } from './components/ItemListContainer/ItemListContainer'
 import { Header } from './components/Header/Header'
-import { Route, Router, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
+import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer'
+import { Cart } from './components/Cart/Cart'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,7 +21,8 @@ function App() {
       <main>
       <Routes>
           <Route path='/' element={<ItemListContainer></ItemListContainer>} />
-          <Route path='/carrito' element={<h1>Carrito</h1>} />
+          <Route path='/carrito' element={<Cart></Cart>} />
+        <Route path='/detalle/:id' element={<ItemDetailContainer />} />
       </Routes>
       </main>
     
