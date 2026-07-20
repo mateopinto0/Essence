@@ -1,0 +1,25 @@
+:root {
+  /* Fondo y texto */
+  --color-fondo: #F3EDE3;      /* Marfil — fondo principal */
+  --color-texto: #2E2620;      /* Espresso — texto principal, headers */
+ 
+  /* Acento primario */
+  --color-acento: #5C2A3D;     /* Ciruela — botones, precios, links activos */
+  --color-acento-hover: #4A2130; /* Ciruela mas oscuro para hover */
+ 
+  /* Fondos suaves */
+  --color-blush: #D9A9A0;      /* Blush — hover de cards, badges */
+  --color-blush-suave: #EFDAD5; /* Blush claro — fondos de secciones */
+ 
+  /* Detalle premium */
+  --color-oro: #A9803F;        /* Oro viejo — lineas, bordes, detalles */
+  --color-oro-suave: #F0E4CE;  /* Oro claro — fondo de badge "premium" */
+ 
+  /* Linea de cremas / botanicos (opcional) */
+  --color-salvia: #8A9880;
+ 
+  /* Utilidad */
+  --color-borde: rgba(46, 38, 32, 0.12);
+  --color-texto-secundario: rgba(46, 38, 32, 0.65);
+  --radius: 10px;
+}

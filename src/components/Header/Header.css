@@ -1,0 +1,8 @@
+header{
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    border-bottom: var(--color-salvia) 1px solid;
+}
+.link{
+    color: var(--color-texto);
+}

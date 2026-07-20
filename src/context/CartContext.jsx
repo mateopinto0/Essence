@@ -17,12 +17,21 @@ export const CartProvider = ({children}) => {
         return cartItems.some((item) => item.id === id);
     }
 
-    const addToCart = (item) => {
-        if(isInCart(item.id)){
-            alert("El producto ya está en el carrito");
-            return;
-        }
-        setCartItems([...cartItems, {...item}]);
+    const addToCart = (item,qty=1) => {
+         const existing = cartItems.find((cartItem) => cartItem.id === item.id);
+
+    if (existing) {
+        setCartItems(
+            cartItems.map((cartItem) =>
+                cartItem.id === item.id
+                    ? { ...cartItem, qty: cartItem.qty + qty }
+                    : cartItem
+            )
+        );
+        return;
+    }
+
+    setCartItems([...cartItems, { ...item, qty }]);
     };
 
     const removeFromCart = (id) => {
@@ -42,8 +51,31 @@ export const CartProvider = ({children}) => {
     const getCart = () => {
         return cartItems;
     }
+    const getQty = (id) => {
+    const item = cartItems.find((cartItem) => cartItem.id === id);
+    return item ? item.qty : 0;
+    };
+    const updateQuantity = (id, qty, maxStock = Infinity) => {
+    const clamped = Math.min(maxStock, Math.max(0, Math.round(qty)));
+
+    if (clamped === 0) {
+        removeFromCart(id);
+        return;
+    }
+
+    setCartItems(
+        cartItems.map((cartItem) =>
+            cartItem.id === id ? { ...cartItem, qty: clamped } : cartItem
+        )
+    );
+  
+};
+
+const getTotalPrice = () => {
+    return cartItems.reduce((total,item) => total + item.precio *item.qty,0);
+}
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, getCantidadItems , getCart}}>
+        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, getCantidadItems , getCart, getQty, updateQuantity, isInCart, getTotalPrice}}>
             {children}
         </CartContext.Provider>
     );

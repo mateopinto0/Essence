@@ -1,0 +1,10 @@
+.item-detail{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.item-img{
+    width: 200px;
+    height: 400px;
+    object-fit: cover;
+}

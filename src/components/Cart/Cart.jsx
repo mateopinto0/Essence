@@ -1,12 +1,18 @@
 import { useCart } from "../../context/CartContext"
+import { BotonCarrito } from "../BotonCarrito/BotonCarrito";
+import { BotonFinalizarCompra } from "../BotonFinalizarCompra/BotonFinalizarCompra";
 import { Item } from "../Item/Item";
 
 export const Cart = () => {
-    const {getCart, clearCart} = useCart();
+    const {getCart, clearCart,getTotalPrice,removeFromCart} = useCart();
     const cartItems = getCart();
 
     const handleClearCart = () => {
         clearCart();
+    }
+
+    const handleRemoveItem = (id) => {
+        removeFromCart(id);
     }
 
     return(
@@ -20,10 +26,17 @@ export const Cart = () => {
             <div className="d-flex flex-wrap justify-content-center align-items-center gap-2">
                 {
         cartItems.map((item)=>(
-            <Item key={item.id} {...item}></Item>
+            <Item key={item.id} {...item}>
+                <div className="d-flex flex-column justify-content-center align-items-center gap-2">
+                <BotonCarrito product={item}></BotonCarrito>
+                <button className="btn btn-danger" onClick={() => handleRemoveItem(item.id)}>Eliminar</button>
+                </div>
+            </Item>
         ))}</div>)}
 
-        <button onClick={handleClearCart}>Vaciar Carrito</button>
+        <h3>Total: ${getTotalPrice().toFixed(2)} </h3>
+        <button onClick={handleClearCart} className="btn-acento">Vaciar Carrito</button>
+        <BotonFinalizarCompra></BotonFinalizarCompra>
         </div>
 
     )
