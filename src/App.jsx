@@ -11,6 +11,7 @@ import { Route, Routes } from 'react-router-dom'
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer'
 import { Cart } from './components/Cart/Cart'
 import { Footer } from './components/Footer/Footer'
+import { CompraExitosa } from './components/CompraExitosa/CompraExitosa'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -25,6 +26,7 @@ function App() {
           <Route path='/' element={<ItemListContainer></ItemListContainer>} />
           <Route path='/carrito' element={<Cart></Cart>} />
         <Route path='/detalle/:id' element={<ItemDetailContainer />} />
+        <Route path='/pedidoExitoso' element={<CompraExitosa></CompraExitosa>}></Route>
       </Routes>
       </main>
     <Footer></Footer>
