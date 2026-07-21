@@ -9,9 +9,16 @@
     justify-content: center;
     border-radius: 5px;
     width: 3em;
+    
 }
 
 .btn-funcion:hover {
     background: var(--color-acento-hover);
     
+}
+.sin-stock {
+    color: var(--color-acento);
+    font-size: 14px;
+    font-style: italic;
+    text-align: center;
 }

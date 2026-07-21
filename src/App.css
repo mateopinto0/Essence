@@ -16,7 +16,10 @@
     outline-offset: 2px;
   }
 }
-
+#root{
+    background-color: var(--color-fondo);
+      
+}
 .hero {
   position: relative;
 

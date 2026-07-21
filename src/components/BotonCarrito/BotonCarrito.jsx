@@ -2,9 +2,11 @@ import { useCart } from "../../context/CartContext";
 import "./BotonCarrito.css";
 
 
-export const BotonCarrito = ({ product, maxStock = Infinity }) => {
+export const BotonCarrito = ({ product, maxStock = 0 }) => {
     const { getQty, updateQuantity, addToCart } = useCart();
     const contador = getQty(product.id);
+ const sinStock = maxStock <= 0;
+    
 
     const incrementar = () => {
         if (contador === 0) {
@@ -22,6 +24,10 @@ export const BotonCarrito = ({ product, maxStock = Infinity }) => {
 
     const handleAddToCart = () => {
         addToCart(product);
+    }
+
+       if (sinStock) {
+        return <p className="sin-stock mt-2">Sin stock disponible</p>;
     }
     return (
         <>

@@ -1,32 +1,49 @@
-import { useCart } from "../../context/CartContext"
+import { useState } from "react";
+import { useCart } from "../../context/CartContext";
 
-const NUMERO_WHATSAPP= "5491163306976";
+import { Spinner } from "../Spinner/Spinner";
+import { descontarStock } from "../../service/ProductoService";
+
+const NUMERO_WHATSAPP = "5491163306976";
 
 export const BotonFinalizarCompra = () => {
+    const { getCart, getTotalPrice, clearCart } = useCart();
+    const [cargando, setCargando] = useState(false);
 
-    const {getCart, getTotalPrice}=useCart();
-     const generarMensaje = () => {
-        if (getCart().length === 0) return "";
-
+    const generarMensaje = () => {
         const lineas = getCart().map(
             (item) => `- ${item.nombre} x${item.qty} — $${(item.qty * item.precio).toFixed(2)}`
         );
 
-        const mensaje = [
+        return [
             "Hola! Quiero hacer este pedido:",
             "",
             ...lineas,
             "",
             `Total: $${getTotalPrice().toFixed(2)}`,
         ].join("\n");
-
-        return mensaje;
     };
 
-    const handleFinalizar = () => {
+    const handleFinalizar = async () => {
+        setCargando(true);
+
+      
+        for (const item of getCart()) {
+            const resultado = await descontarStock(item.id, item.qty);
+            if (!resultado.ok) {
+                alert(`${item.nombre}: ${resultado.mensaje}`);
+                setCargando(false);
+                return; 
+            }
+        }
+
+       
         const mensaje = generarMensaje();
         const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
         window.open(url, "_blank");
+
+        clearCart();
+        setCargando(false);
     };
 
     return (
@@ -34,9 +51,9 @@ export const BotonFinalizarCompra = () => {
             type="button"
             className=" btn-acento"
             onClick={handleFinalizar}
-            disabled={getCart().length === 0}
+            disabled={getCart().length === 0 || cargando}
         >
-            Finalizar compra por WhatsApp
+            {cargando ? <Spinner size={16} /> : "Finalizar compra por WhatsApp"}
         </button>
     );
-}
+};

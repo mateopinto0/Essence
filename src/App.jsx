@@ -10,6 +10,7 @@ import { Header } from './components/Header/Header'
 import { Route, Routes } from 'react-router-dom'
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer'
 import { Cart } from './components/Cart/Cart'
+import { Footer } from './components/Footer/Footer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,7 +27,7 @@ function App() {
         <Route path='/detalle/:id' element={<ItemDetailContainer />} />
       </Routes>
       </main>
-    
+    <Footer></Footer>
     </>
   )
 }

@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, doc, getDocs, runTransaction } from "firebase/firestore";
 import { db } from "../config";
 
 const productosCollection = collection(db,"productos");
@@ -26,3 +26,28 @@ export const getItemById = async (id) => {
     }
 }
   
+export const descontarStock = async (id, cantidadComprada) => {
+    const productRef= doc(db,"productos",id);
+
+    try{
+        await runTransaction(db,async(transaction)=> {
+            const productDoc = await transaction.get(productRef);
+
+            if (!productDoc.exists()) {
+                throw new Error("El producto ya no existe");
+            }
+
+            const stockActual = productDoc.data().stock;
+
+            if (stockActual < cantidadComprada) {
+                throw new Error(`Solo quedan ${stockActual} unidades disponibles`);
+            }
+
+            transaction.update(productRef, { stock: stockActual - cantidadComprada });
+        });
+
+        return {ok:true}
+    }catch(error){
+        return {ok:false, mensaje:error.message};
+    }
+}

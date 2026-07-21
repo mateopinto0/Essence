@@ -1,0 +1,11 @@
+.itemlist{
+    background-color: var(--color-fondo);
+    margin-top: 1em;
+}
+
+@media screen  and (max-width:600px){
+    
+
+.lista{
+    gap: 1em;
+}}

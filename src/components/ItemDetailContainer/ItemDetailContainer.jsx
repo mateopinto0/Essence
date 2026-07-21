@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ItemDetail } from "../ItemDetail/ItemDetail"
 import { useParams } from "react-router-dom";
 import { getItemById } from "../../service/ProductoService.js";
+import { Spinner } from "../Spinner/Spinner.jsx";
 
 
 export const ItemDetailContainer = () => {
@@ -25,7 +26,7 @@ export const ItemDetailContainer = () => {
     }, [id]);
 
     // 3. Controlás que no intente renderizar si el item todavía es null
-    if (!item) return <p>Cargando perfume...</p>;
+    if (!item) return <Spinner fullPage></Spinner>;
 
     return (
         <ItemDetail item={item}/>

@@ -1,10 +1,42 @@
-.item-detail{
-    width: 70%;
-    margin: 0 auto;
+.item-detail {
+    width: 50%;
+    margin-top: 1em;
+    background-color: white;
+    border-radius: 1em;
+    
+}
+.container-item-detail{
+    background-color: var(--color-fondo);
+    height: 90vh auto;
+    
 }
 
-.item-img{
-    width: 200px;
-    height: 400px;
+.item-img {
+    border-radius: 8px;
     object-fit: cover;
+    max-height: 320px;
+}
+
+.item-nombre {
+    font-size: 24px;
+    margin: 16px 0 4px;
+}
+
+.precio {
+
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 0 12px;
+}
+
+.descripcion {
+    color: var(--color-texto-secundario);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+@media screen  and (max-width:500px){
+    .item-detail{
+        width: 90%;
+    }
 }
