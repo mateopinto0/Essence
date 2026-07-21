@@ -37,7 +37,7 @@ export const BotonFinalizarCompra = ({ datosComprador, onSuccess }) => {
             alert("Por favor completa tu nombre y teléfono antes de continuar.");
             return;
         }
-        const ventanaWhatsApp = window.open("", "_blank");
+        //const ventanaWhatsApp = window.open("", "_blank");
         setCargando(true);
 
         try {
@@ -59,7 +59,7 @@ export const BotonFinalizarCompra = ({ datosComprador, onSuccess }) => {
             const mensaje = generarMensaje(pedidoId);
             const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
 
-            ventanaWhatsApp.location.href = url;
+            //ventanaWhatsApp.location.href = url;
 
              if (onSuccess) {
                 onSuccess({ pedidoId, montoTotal ,items:getCart(),url});
