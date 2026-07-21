@@ -26,7 +26,7 @@ export const BotonFinalizarCompra = () => {
 
     const handleFinalizar = async () => {
         setCargando(true);
-
+          const nuevaVentana = window.open("", "_blank");
       
         for (const item of getCart()) {
             const resultado = await descontarStock(item.id, item.qty);
@@ -40,8 +40,12 @@ export const BotonFinalizarCompra = () => {
        
         const mensaje = generarMensaje();
         const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
-        window.open(url, "_blank");
-
+         if (nuevaVentana) {
+        nuevaVentana.location.href = url;
+    } else {
+       
+        window.location.href = url;
+    }
         clearCart();
         setCargando(false);
     };
