@@ -27,7 +27,7 @@ export const Cart = () => {
             <CompraExitosa 
                 pedidoId={pedidoRealizado.pedidoId} 
                 montoTotal={pedidoRealizado.total || pedidoRealizado.montoTotal} 
-                items={pedidoRealizado.items}
+                items={pedidoRealizado.items} url={pedidoRealizado.url}
             />
         );
     }

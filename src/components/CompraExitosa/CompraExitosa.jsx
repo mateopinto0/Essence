@@ -4,7 +4,7 @@ import "./CompraExitosa.css"
 
 const ALIAS = "ALIAS.EJEMPLO"; // Reemplazá por tu alias real
 
-export const CompraExitosa = ({ pedidoId, montoTotal ,items = []}) => {
+export const CompraExitosa = ({ pedidoId, montoTotal ,items = [], url}) => {
     const [copiado, setCopiado] = useState(false);
   
 
@@ -21,6 +21,8 @@ export const CompraExitosa = ({ pedidoId, montoTotal ,items = []}) => {
             </div>
             <h2 className="text-success">¡Pedido Registrado!</h2>
             {pedidoId && <p className="mb-1">Número de Orden: <strong>#{pedidoId}</strong></p>}
+
+            
 
             {items && items.length > 0 && (
                 <div className="w-100 my-3 text-start">
@@ -45,6 +47,11 @@ export const CompraExitosa = ({ pedidoId, montoTotal ,items = []}) => {
                     </div>
                 </div>
             )}
+             {montoTotal && (
+                <h4 className="mt-3">
+                    Total a transferir: <span className="text-success">${Number(montoTotal).toLocaleString('es-AR')}</span>
+                </h4>
+            )}
             <hr className="w-100" />
 
             <h3>Datos para el Pago</h3>
@@ -62,15 +69,29 @@ export const CompraExitosa = ({ pedidoId, montoTotal ,items = []}) => {
                 {copiado ? "✓ ¡Alias Copiado!" : "📋 Copiar Alias"}
             </button>
 
-            {montoTotal && (
-                <h4 className="mt-3">
-                    Total a transferir: <span className="text-success">${Number(montoTotal).toLocaleString('es-AR')}</span>
-                </h4>
-            )}
+           
+
+            
 
             <p className="text-muted small mt-3">
                 Si no se abrió WhatsApp automáticamente, recordá enviarnos la captura del comprobante al chat.
             </p>
+
+            {/* BOTÓN AUXILIAR DESTACADO PARA WHATSAPP */}
+            {url && (
+                <div className="w-100 my-2 p-3 bg-white rounded border border-success">
+                    <p className="mb-2 fw-bold text-dark">Paso final: Enviá la orden a nuestro chat</p>
+                    <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-success btn-lg w-100 d-flex align-items-center justify-content-center gap-2 shadow-sm"
+                        
+                    >
+                        <span> Abrir WhatsApp con mi pedido</span>
+                    </a>
+                </div>
+            )}
         </div>
     );
 };

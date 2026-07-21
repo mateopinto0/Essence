@@ -37,7 +37,7 @@ export const BotonFinalizarCompra = ({ datosComprador, onSuccess }) => {
             alert("Por favor completa tu nombre y teléfono antes de continuar.");
             return;
         }
-
+        const ventanaWhatsApp = window.open("", "_blank");
         setCargando(true);
 
         try {
@@ -59,14 +59,18 @@ export const BotonFinalizarCompra = ({ datosComprador, onSuccess }) => {
             const mensaje = generarMensaje(pedidoId);
             const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
 
+            ventanaWhatsApp.location.href = url;
+
+             if (onSuccess) {
+                onSuccess({ pedidoId, montoTotal ,items:getCart(),url});
+            }
+
             clearCart();
             setCargando(false)
 
-            if (onSuccess) {
-                onSuccess({ pedidoId, montoTotal ,items:getCart()});
-            }
+           
             
-            window.open(url,"_blank") ;
+            
 
         } catch (error) {
             console.error("Error al procesar el pedido:", error);
