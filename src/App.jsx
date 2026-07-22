@@ -12,24 +12,33 @@ import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetail
 import { Cart } from './components/Cart/Cart'
 import { Footer } from './components/Footer/Footer'
 import { CompraExitosa } from './components/CompraExitosa/CompraExitosa'
+import { PublicLayout } from './layouts/PublicLayout'
+import { Login } from './components/Login/Login'
+import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute'
+import { AdminLayout } from './layouts/AdminLayout'
+import { Dashboard } from './components/adminComponents/Dashboard/Dashboard'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-    <Header></Header>
-
-    
-      <main>
+   
       <Routes>
+        <Route element={<PublicLayout />}>
           <Route path='/' element={<ItemListContainer></ItemListContainer>} />
           <Route path='/carrito' element={<Cart></Cart>} />
         <Route path='/detalle/:id' element={<ItemDetailContainer />} />
-        <Route path='/pedidoExitoso' element={<CompraExitosa></CompraExitosa>}></Route>
+        <Route path='/pedidoExitoso' element={<CompraExitosa></CompraExitosa>} />
+        </Route>
+
+        <Route path='/login' element={<Login></Login>}/>
+
+        <Route path='/admin' element={<ProtectedRoute><AdminLayout></AdminLayout></ProtectedRoute>}>
+            <Route path='dashboard' element={<Dashboard></Dashboard>}/>
+        </Route>
       </Routes>
-      </main>
-    <Footer></Footer>
+      
     </>
   )
 }

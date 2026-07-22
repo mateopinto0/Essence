@@ -9,15 +9,18 @@ import './colores.css'
 import { BrowserRouter, Router } from 'react-router-dom';
 import { CartProvider } from './context/CartContext.jsx';
 import { SearchProvider } from './context/SearchContext.jsx';
+import { AuthProvider } from './context/AuthContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+    <AuthProvider>
     <CartProvider>
       <SearchProvider>
     <App />
     </SearchProvider>
     </CartProvider>
+    </AuthProvider>
     </BrowserRouter>
   </StrictMode>,
 )

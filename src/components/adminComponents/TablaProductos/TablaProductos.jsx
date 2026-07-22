@@ -1,0 +1,45 @@
+import { useEffect, useState } from "react"
+import { getItems } from "../../../service/ProductoService"
+import { Spinner } from "../../Spinner/Spinner";
+
+export const TablaProductos = ({items}) => {
+
+    return (
+       <div className="table-responsive shadow-sm rounded d-flex align-items-center justify-content-center"> 
+            <table className="table table-striped table-hover table-bordered mb-0 w-75">
+                <thead className="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Marca</th>
+                        <th>Precio</th>
+                        <th>Tipo</th>
+                        <th>Cantidad en stock</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {items.length === 0 ? (
+                        <tr>
+                            
+                            <td colSpan={6} className="text-center text-muted py-4">
+                                No hay productos.
+                            </td>
+                        </tr>
+                    ) : (
+                        items.map((item) => (
+                            <tr key={item.id}>
+                                <td>{item.id}</td>
+                                <td>{item.nombre}</td>
+                                <td>{item.marca}</td>
+                                <td>{item.precio}</td>
+                                <td>{item.tipo}</td>
+                                <td>{item.stock}</td>
+                            </tr>
+                        ))
+                    )}
+                </tbody>
+            </table>
+        </div>
+    )
+}

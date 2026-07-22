@@ -1,0 +1,18 @@
+.login-container{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login{
+    background-color: var(--color-blush);
+    border-radius: 1em;
+    color: var(--color-texto);
+}
+
+.login-input{
+    border: none;
+    border-radius: 1em;
+    padding: 5px;
+}
