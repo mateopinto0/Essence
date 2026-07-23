@@ -54,6 +54,7 @@ export const FormEditarItemContainer = () => {
     const handleSubmit = async(e) => {
         e.preventDefault();
         setLoading(true);
+       
     try {
            
             let imagenUrl = product.imagenUrl;
@@ -70,7 +71,7 @@ export const FormEditarItemContainer = () => {
 
             await editarItem(id, productData); 
 
-            navigate(`/admin/editar-item/${id}`, { replace: true });
+             navigate("/admin/dashboard")
         } catch (error) {
             console.log(error)
         } finally {

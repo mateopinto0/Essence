@@ -19,6 +19,7 @@ import { AdminLayout } from './layouts/AdminLayout'
 import { Dashboard } from './components/adminComponents/Dashboard/Dashboard'
 import { FormProductoContainer } from './components/adminComponents/FormProducto/FormProductoContainer'
 import { FormEditarItemContainer } from './components/adminComponents/FormEditarItem/FormEditarItemContainer'
+import { DetallePedidoContainer } from './components/adminComponents/DetallePedidoContainer/DetallePedidoContainer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -40,6 +41,7 @@ function App() {
             <Route path='dashboard' element={<Dashboard></Dashboard>}/>
             <Route path='agregar-producto' element={<FormProductoContainer></FormProductoContainer>}></Route>
             <Route path='editar-item/:id' element={<FormEditarItemContainer></FormEditarItemContainer>}></Route>
+            <Route path='pedidos/:id' element={<DetallePedidoContainer></DetallePedidoContainer>}></Route>
         </Route>
       </Routes>
       

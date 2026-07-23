@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs, serverTimestamp } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, serverTimestamp, updateDoc } from "firebase/firestore";
 import { db } from "../config";
 
 const pedidosCollection = collection(db,"pedidos");
@@ -10,6 +10,31 @@ export const getPedidos = async () => {
     }catch(error){
         console.error("Error al obtener pedidos:", error);
         return [];
+    }
+}
+
+export const getPedidoById = async (id) =>{
+    try{
+        const docRef= doc(db,"pedidos",id);
+        const snapshot = await getDoc(docRef);
+        if(snapshot.exists()){
+            return {id:snapshot.id, ...snapshot.data()}
+        }
+    }catch(err){
+        console.log(err);
+        throw new Error("error: " + err)
+    }
+}
+
+export const cambiarEstadoPedido = async(id,nuevoEstado) => {
+    try{
+        const ref= doc(db,"pedidos",id);
+        await updateDoc(ref,{
+            estado: nuevoEstado
+        })
+        console.log("Estado actualizado")
+    }catch(err){
+        throw new Error(err)
     }
 }
 
@@ -29,4 +54,16 @@ export const crearPedido = async (comprador,carrito,total) => {
     })
 
     return docRef.id;
+}
+export const eliminarPedido = async(id) => {
+    try{
+            
+            const docRef= doc(db,"pedidos",id);
+    
+            await deleteDoc(docRef);
+            console.log("Pedido eliminado");
+        }catch(err){
+            throw new Error(err);
+            
+        }
 }

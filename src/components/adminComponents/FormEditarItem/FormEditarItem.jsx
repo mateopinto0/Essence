@@ -2,10 +2,8 @@ import { Link } from "react-router-dom";
 
 export const FormEditarItem = ({product,onSubmit,onChange,onFile}) => {
     return (<>      
-    <div className="d-flex align-items-center">  
-    <Link to={'/admin/dashboard'} className="btn btn-danger p-1 ms-4 mt-4">Volver</Link>
-     </div>   
-        <div className="container ">
+    
+        <div className="container">
             
             <div className="row justify-content-center">
                 <div className="col-12 col-md-8 col-lg-6" >
@@ -54,10 +52,11 @@ export const FormEditarItem = ({product,onSubmit,onChange,onFile}) => {
                                     <input type="file" className="form-control" accept="image/*" onChange={onFile} />
                                 </div>
 
-                                <div className="d-grid">
+                                <div className="d-grid gap-2">
                                     <button type="submit" className="btn-acento btn-lg">
                                         Guardar cambios
                                     </button>
+                                    <Link to={"/admin/dashboard"} className="btn btn-danger">Cancelar</Link>
                                 </div>
                             </form>
                         </div>
