@@ -33,6 +33,7 @@ export const TablaPedidos = ({pedidos,handleRemovePedido,onCambiarEstado,busqued
                     <thead className="table-dark">
                         <tr>
                             <th>ID</th>
+                            <th>Cliente</th>
                             <th>Monto Total</th>
                             <th>Estado</th>
                             <th>Fecha de creación</th>
@@ -52,6 +53,7 @@ export const TablaPedidos = ({pedidos,handleRemovePedido,onCambiarEstado,busqued
                             currentData.map((pedido) => (
                                 <tr key={pedido.id}>
                                     <td className="text-muted fw-bold">{pedido.id}</td>
+                                    <td className="text-muted fw-bold">{pedido.comprador.nombre}</td>
                                     <td>${pedido.montoTotal}</td>
                                     <td>
                                         <select 
