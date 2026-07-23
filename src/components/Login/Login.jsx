@@ -41,7 +41,7 @@ export const Login = () => {
                 <label>Contraseña</label>
                 <input className="w-100 login-input" type="password" name="password" placeholder="Ingrese su contraseña" id="password" onChange={(e) => setPassword(e.target.value)} required></input>
                 </div>
-                {error && <p className="errorMessage">Correo y/o contraseña incorrecto</p>}
+                {error && <p className="errorMessage text-danger">Correo y/o contraseña incorrecto</p>}
                 <button type="submit" className="btn-acento">Iniciar sesion</button>
             </form>
             </div>

@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react"
 import { getItems } from "../../../service/ProductoService"
 import { Spinner } from "../../Spinner/Spinner";
+import { Link } from "react-router-dom";
 
-export const TablaProductos = ({items}) => {
+export const TablaProductos = ({items,handleRemoveItem}) => {
+
+
 
     return (
        <div className="table-responsive shadow-sm rounded d-flex align-items-center justify-content-center"> 
@@ -15,6 +18,7 @@ export const TablaProductos = ({items}) => {
                         <th>Precio</th>
                         <th>Tipo</th>
                         <th>Cantidad en stock</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
 
@@ -35,6 +39,11 @@ export const TablaProductos = ({items}) => {
                                 <td>{item.precio}</td>
                                 <td>{item.tipo}</td>
                                 <td>{item.stock}</td>
+                                <td className="d-flex gap-1">
+                                    
+                                    <Link to={`/admin/editar-item/${item.id}`} className="btn btn-dark">Editar</Link>
+                                    <button className="btn btn-danger" onClick={()=>handleRemoveItem(item.id)}>Eliminar</button>
+                                </td>
                             </tr>
                         ))
                     )}

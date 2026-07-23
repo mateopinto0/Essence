@@ -17,6 +17,8 @@ import { Login } from './components/Login/Login'
 import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute'
 import { AdminLayout } from './layouts/AdminLayout'
 import { Dashboard } from './components/adminComponents/Dashboard/Dashboard'
+import { FormProductoContainer } from './components/adminComponents/FormProducto/FormProductoContainer'
+import { FormEditarItemContainer } from './components/adminComponents/FormEditarItem/FormEditarItemContainer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -36,6 +38,8 @@ function App() {
 
         <Route path='/admin' element={<ProtectedRoute><AdminLayout></AdminLayout></ProtectedRoute>}>
             <Route path='dashboard' element={<Dashboard></Dashboard>}/>
+            <Route path='agregar-producto' element={<FormProductoContainer></FormProductoContainer>}></Route>
+            <Route path='editar-item/:id' element={<FormEditarItemContainer></FormEditarItemContainer>}></Route>
         </Route>
       </Routes>
       

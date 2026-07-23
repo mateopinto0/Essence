@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext"
 import { HeaderAdmin } from "../HeaderAdmin/HeaderAdmin";
 import { TablaPedidosContainer } from "../TablaPedidosContainer/TablaPedidosContainer";
@@ -14,6 +15,9 @@ export const Dashboard = () => {
     return(
         <div className="container h-auto w-100">
             <HeaderAdmin></HeaderAdmin>
+            <div className="d-flex align-items-center justify-content-center w-100">     
+            <Link to={'/admin/agregar-producto'} className="btn-acento mt-3 ">Agregar Producto</Link>
+            </div>
         <TablaProductosContainer></TablaProductosContainer>
         <TablaPedidosContainer></TablaPedidosContainer>
         </div>

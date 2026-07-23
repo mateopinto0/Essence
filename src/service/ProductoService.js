@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, runTransaction } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, runTransaction, updateDoc } from "firebase/firestore";
 import { db } from "../config";
 
 const productosCollection = collection(db,"productos");
@@ -49,5 +49,38 @@ export const descontarStock = async (id, cantidadComprada) => {
         return {ok:true}
     }catch(error){
         return {ok:false, mensaje:error.message};
+    }
+}
+
+export const addProducto = async (productData) => {
+    
+    try{
+    const docRef = await addDoc(productosCollection,productData)
+    return docRef.id;    
+    }catch(error){
+        throw new Error("mensaje de error: " + error)
+    }
+}
+
+export const removeProducto = async (productId) => {
+    try{
+        
+        const docRef= doc(db,"productos",productId);
+
+        await deleteDoc(docRef);
+        console.log("Producto eliminado");
+    }catch(err){
+        throw new Error(err);
+        
+    }
+}
+
+export const editarItem = async(id,productData) => {
+    try{
+        const docRef= doc(db,"productos",id);
+        await updateDoc(docRef,productData)
+        console.log("Producto Actualizado")
+    }catch(err){
+        throw new Error(err)
     }
 }
