@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { editarItem, getItemById } from "../../../service/ProductoService";
 import { uploadImage } from "../../../service/uploadImage";
 import { FormEditarItem } from "./FormEditarItem";
+import { Spinner } from "react-bootstrap";
 
 export const FormEditarItemContainer = () => {
     const [product,setProduct] = useState({
@@ -21,6 +22,7 @@ export const FormEditarItemContainer = () => {
     useEffect(()=>{
         const cargarProducto = async() => {
         try{
+            setLoading(true)
             const data= await getItemById(id);
             setProduct({
                 nombre: data.nombre,
@@ -77,6 +79,10 @@ export const FormEditarItemContainer = () => {
         } finally {
             setLoading(false);
         }
+    }
+
+    if(loading){
+        return <Spinner fullPage></Spinner>
     }
 
     return(

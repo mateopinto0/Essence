@@ -7,8 +7,9 @@ body {
 }
 
 h1,h2,h3,h4,h5,h6{
-    color: var(--color-texto);
+    
     font-family: "IBM Plex Serif", serif;
+    
 }
 
 *{
@@ -16,30 +17,127 @@ h1,h2,h3,h4,h5,h6{
 }
 
 
-button{
-    background-color: var(--color-blush);
-    color: var(--color-fondo);
-    border: none;
-    padding: 10px 20px;
-    border-radius: var(--radius);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.btn-acento {
-    background: var(--color-acento);
-    color: var(--color-fondo);
-    border: none;
-    padding: 5px;
-    border-radius: 1em;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    justify-content: center;
+header{
+    height: 10%;
 }
 
-.btn-acento:hover {
-    background: var(--color-acento-hover);
+main{
+    height: 80%;
+}
+
+footer{
+    height: 10%;
+    bottom: 0;
+}
+
+
+
+/* =========================================
+   CLASES DE UTILIDAD (Estilo Bootstrap)
+========================================= */
+
+/* ---- TEXTOS (text-*) ---- */
+.text-principal { color: var(--color-texto) !important; }
+.text-secundario { color: var(--color-texto-secundario) !important; }
+.text-acento { color: var(--color-acento) !important; }
+.text-oro { color: var(--color-oro) !important; }
+.text-salvia { color: var(--color-salvia) !important; }
+.text-blush { color: var(--color-blush) !important; }
+
+/* ---- FONDOS (bg-*) ---- */
+.bg-fondo { background-color: var(--color-fondo) !important; }
+.bg-blush { background-color: var(--color-blush) !important; }
+.bg-blush-suave { background-color: var(--color-blush-suave) !important; }
+.bg-oro { background-color: var(--color-oro) !important; }
+.bg-oro-suave { background-color: var(--color-oro-suave) !important; }
+.bg-salvia { background-color: var(--color-salvia) !important; }
+
+/* ---- BORDES Y RADIUS ---- */
+.border-custom { 
+    border: 1px solid var(--color-borde) !important; 
+}
+.border-oro { 
+    border: 1px solid var(--color-oro) !important; 
+}
+.rounded-custom { 
+    border-radius: var(--radius) !important; 
+}
+
+/* ---- BOTONES (btn-*) ---- */
+/* Reemplaza o complementa a los btn de Bootstrap */
+
+/* Botón Principal (Acento/Ciruela) */
+.btn-acento {
+    background-color: var(--color-acento);
+    color: var(--color-fondo); /* Texto claro para contrastar */
+    border: none;
+    border-radius: var(--radius);
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-acento:hover:not(:disabled) {
+    background-color: var(--color-acento-hover);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(92, 42, 61, 0.3); /* Sombra color ciruela */
+}
+
+.btn-acento:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Botón Secundario (Oro o Blush) */
+.btn-outline-oro {
+    background-color: transparent;
+    color: var(--color-oro);
+    border: 1px solid var(--color-oro);
+    border-radius: var(--radius);
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-oro:hover {
+    background-color: var(--color-oro);
+    color: white;
+}
+
+/* ---- BADGES / ETIQUETAS ---- */
+.badge-premium {
+    background-color: var(--color-oro-suave);
+    color: var(--color-oro);
+    padding: 0.35em 0.65em;
+    border-radius: var(--radius);
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+.badge-blush {
+    background-color: var(--color-blush-suave);
+    color: var(--color-acento);
+    padding: 0.35em 0.65em;
+    border-radius: var(--radius);
+    font-size: 0.85em;
+    font-weight: 600;
+}
+/* ---- EFECTO VIDRIO (GLASSMORPHISM) ---- */
+.efecto-vidrio {
+    /* 1. Fondo blanco o marfil pero al 60% de opacidad */
+    background-color: rgba(226, 224, 224, 0.6) !important; 
     
+    /* 2. La magia: desenfoca lo que haya detrás del contenedor */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* Soporte para Safari */
+    
+    /* 3. Un borde blanco muy sutil para dar el reflejo del cristal */
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    
+    /* 4. Sombra suave para despegar el "vidrio" del fondo */
+    box-shadow: 0 8px 32px 0 rgba(46, 38, 32, 0.05); /* Usa tu color de texto con 5% de opacidad */
+    
+    border-radius: var(--radius);
 }
 @keyframes girar {
     to {
@@ -49,6 +147,12 @@ button{
 
 @media screen and (max-width:500px) {
     #root{
+        font-size: 70%;
+    }
+    h1,h2,h3,h4,h5,h6{
+        font-size: 70%;
+    }
+    button{
         font-size: 70%;
     }
 }

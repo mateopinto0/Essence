@@ -27,7 +27,7 @@ export const BotonCarrito = ({ product, maxStock = 0 }) => {
     }
 
        if (sinStock) {
-        return <p className="sin-stock mt-2">Sin stock disponible</p>;
+        return <p className="sin-stock mt-2 text-secundario">Sin stock disponible</p>;
     }
     return (
         <>

@@ -16,7 +16,7 @@ export const TablaPedidos = ({pedidos,handleRemovePedido,onCambiarEstado,busqued
     const currentData = pedidos.slice(offset, offset + ITEMS_PER_PAGE);
     const pageCount = Math.ceil(pedidos.length / ITEMS_PER_PAGE);
     return(
-       <div className="container-fluid d-flex flex-column align-items-center gap-4 py-4">
+       <div className="container-fluid d-flex flex-column align-items-center gap-4 py-2">
             
             <div className="w-75">
                 <input

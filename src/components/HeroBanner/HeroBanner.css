@@ -1,0 +1,30 @@
+/* ---- HERO BANNER ---- */
+.hero-container {
+    /* Imagen de fondo (Reemplaza la URL por la tuya cuando la tengas) */
+    background-image: url('https://images.unsplash.com/photo-1615397323116-241f3e79435b?q=80&w=2000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Ocupa el 75% del alto de la pantalla, dejando asomar los productos abajo */
+    min-height: 75vh; 
+    width: 100%;
+    position: relative;
+}
+
+.hero-overlay {
+    /* Ocupa exactamente el mismo tamaño que el contenedor padre */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Un degradado usando tu --color-fondo (Marfil) en formato RGB para darle transparencia.
+       Esto tiñe ligeramente la imagen para que coincida con tu paleta */
+    background: linear-gradient(
+        to bottom, 
+        rgba(243, 237, 227, 0.2), 
+        rgba(243, 237, 227, 0.8) /* Más opaco abajo para fusionarse con el fondo de la página */
+    ); 
+}

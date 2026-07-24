@@ -5,6 +5,7 @@ import { CarritoModal } from "../CarritoModal/CarritoModal";
 import { CompraExitosa } from "../CompraExitosa/CompraExitosa";
 import { Item } from "../Item/Item";
 import "./Cart.css";
+import { ItemCarrito } from "../ItemCarrito/ItemCarrito";
 
 export const Cart = () => {
     const { getCart, clearCart, getTotalPrice, removeFromCart } = useCart();
@@ -32,7 +33,7 @@ export const Cart = () => {
         );
     }
 
-    // 3. Si el carrito está vacío y no hay compra recién hecha:
+    
     if (cartItems.length === 0) {
         return (
             <div className="d-flex flex-column justify-content-center align-items-center gap-2 container-cart">
@@ -42,34 +43,55 @@ export const Cart = () => {
         );
     }
 
-    // 4. Si hay productos en el carrito:
+   
     return (
-        <div className="d-flex flex-column justify-content-center align-items-center gap-2 container-cart">
-            <h1>Carrito</h1>
+        <div className="container py-5 container-cart">
+    <h1 className="text-principal mb-4 text-center text-md-start">Tu Carrito</h1>
 
-            <div className="d-flex flex-wrap justify-content-center align-items-center gap-2">
-                {cartItems.map((item) => (
-                    <Item key={item.id} {...item}>
-                        <div className="d-flex flex-column justify-content-center align-items-center gap-2">
-                            <BotonCarrito product={item} maxStock={item.stock} />
-                            <button className="btn btn-danger" onClick={() => handleRemoveItem(item.id)}>
-                                Eliminar
-                            </button>
-                        </div>
-                    </Item>
-                ))}
-            </div>
+    <div className="row">
+ 
+        <div className="col-12 col-lg-8 mb-4">
+            {cartItems.map((item) => (
+                <ItemCarrito key={item.id} {...item}>
+                   
+                    <BotonCarrito product={item} maxStock={item.stock} />
+                    
+                    <button 
+                        className="btn btn-outline-danger" 
+                        onClick={() => handleRemoveItem(item.id)}
+                    >
+                        Eliminar
+                    </button>
+                </ItemCarrito>
+            ))}
+        </div>
 
-            <h3>Total: ${getTotalPrice().toFixed(2)}</h3>
-
-            <div className="btn-group flex-column gap-2 mb-1">
-                <button onClick={handleClearCart} className="btn-acento">
-                    Vaciar Carrito
-                </button>
+        
+        <div className="col-12 col-lg-4 z-0" >
+           
+            <div className="bg-blush-suave p-4 rounded-custom border-custom shadow-sm sticky-md-top" style={{ top: '20px' }}>
+                <h4 className="text-principal mb-3">Resumen de compra</h4>
                 
-                {/* 5. Le pasamos el handler a CarritoModal */}
-                <CarritoModal onPedidoExitoso={(datos) => setPedidoRealizado(datos)} />
+                <hr className="border-borde opacity-50" />
+                
+                <div className="d-flex justify-content-between align-items-center mb-4">
+                    <span className="text-secundario fs-5">Total a pagar:</span>
+                    <span className="text-oro fw-bold fs-3">${getTotalPrice().toFixed(2)}</span>
+                </div>
+
+   
+                <div className="d-flex flex-column gap-3">
+                    
+                    <CarritoModal onPedidoExitoso={(datos) => setPedidoRealizado(datos)} />
+                    
+                   
+                    <button onClick={handleClearCart} className="btn btn-outline-danger w-100">
+                        Vaciar Carrito
+                    </button>
+                </div>
             </div>
         </div>
+    </div>
+</div>
     );
 };

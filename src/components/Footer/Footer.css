@@ -1,8 +1,8 @@
 .footer {
-    background: var(--color-texto);
-    color: var(--color-fondo);
+  
     padding: 40px 24px 0;
     margin-top: 48px;
+    color: var(--color-principal)
 }
 
 .footer-container {
@@ -21,7 +21,7 @@
 
 .footer-descripcion {
     font-size: 13px;
-    color: rgba(243, 237, 227, 0.65);
+    color: var(--color-principal);
     line-height: 1.6;
     margin: 0;
 }
@@ -37,7 +37,7 @@
 .footer-link {
     display: block;
     font-size: 14px;
-    color: var(--color-fondo);
+    color: var(--color-principal);
     text-decoration: none;
     margin-bottom: 8px;
     opacity: 0.85;
@@ -45,7 +45,7 @@
 
 .footer-link:hover {
     opacity: 1;
-    color: var(--color-blush);
+    color: var(--color-fondo);
 }
 
 .footer-redes {
@@ -54,12 +54,12 @@
 }
 
 .footer-redes a {
-    color: var(--color-fondo);
+    color: var(--color-principal);
     font-size: 20px;
 }
 
 .footer-redes a:hover {
-    color: var(--color-blush);
+   color: var(--color-fondo);
 }
 
 .footer-bottom {

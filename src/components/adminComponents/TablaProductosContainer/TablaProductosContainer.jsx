@@ -30,7 +30,7 @@ export const TablaProductosContainer = () => {
     }   
 
     return(<div className="m-2">
-        <h3 className="text-center">Lista de productos</h3>
+        <h4 className="text-center">Lista de productos</h4>
         <TablaProductos items={itemsFiltrados} busqueda={busqueda} setBusqueda={setBusqueda} handleRemoveItem={handleRemoveItem}></TablaProductos>
         </div>
     )

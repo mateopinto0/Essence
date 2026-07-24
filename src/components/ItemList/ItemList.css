@@ -1,6 +1,7 @@
 .itemlist{
     background-color: var(--color-fondo);
     margin-top: 1em;
+    width: 100%;
 }
 
 @media screen  and (max-width:600px){

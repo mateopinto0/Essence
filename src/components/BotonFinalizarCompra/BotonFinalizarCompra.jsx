@@ -32,16 +32,16 @@ export const BotonFinalizarCompra = ({ datosComprador, onSuccess }) => {
     const handleFinalizar = async (e) => {
         e.preventDefault();
 
-        // 1. Validamos que haya ingresado los datos antes de hacer los await
+       
         if (!datosComprador?.nombre || !datosComprador?.telefono) {
             alert("Por favor completa tu nombre y teléfono antes de continuar.");
             return;
         }
-        //const ventanaWhatsApp = window.open("", "_blank");
+
         setCargando(true);
 
         try {
-            // 2. Descontamos stock
+     
             for (const item of getCart()) {
                 const resultado = await descontarStock(item.id, item.qty);
                 if (!resultado.ok) {
@@ -59,7 +59,7 @@ export const BotonFinalizarCompra = ({ datosComprador, onSuccess }) => {
             const mensaje = generarMensaje(pedidoId);
             const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
 
-            //ventanaWhatsApp.location.href = url;
+
 
              if (onSuccess) {
                 onSuccess({ pedidoId, montoTotal ,items:getCart(),url});

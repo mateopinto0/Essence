@@ -20,6 +20,8 @@ import { Dashboard } from './components/adminComponents/Dashboard/Dashboard'
 import { FormProductoContainer } from './components/adminComponents/FormProducto/FormProductoContainer'
 import { FormEditarItemContainer } from './components/adminComponents/FormEditarItem/FormEditarItemContainer'
 import { DetallePedidoContainer } from './components/adminComponents/DetallePedidoContainer/DetallePedidoContainer'
+import { Tienda } from './components/Tienda/Tienda'
+import { Nosotros } from './components/Nosotros/Nosotros'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -29,10 +31,11 @@ function App() {
    
       <Routes>
         <Route element={<PublicLayout />}>
-          <Route path='/' element={<ItemListContainer></ItemListContainer>} />
+          <Route path='/' element={<Tienda></Tienda>} />
           <Route path='/carrito' element={<Cart></Cart>} />
         <Route path='/detalle/:id' element={<ItemDetailContainer />} />
         <Route path='/pedidoExitoso' element={<CompraExitosa></CompraExitosa>} />
+        <Route path='/nuestra-historia' element={<Nosotros></Nosotros>}></Route>
         </Route>
 
         <Route path='/login' element={<Login></Login>}/>

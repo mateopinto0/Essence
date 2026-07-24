@@ -16,7 +16,7 @@ export const TablaProductos = ({ items, handleRemoveItem, busqueda, setBusqueda 
     const pageCount = Math.ceil(items.length / ITEMS_PER_PAGE);
 
     return (
-        <div className="container-fluid d-flex flex-column align-items-center gap-4 py-4">
+        <div className="container-fluid d-flex flex-column align-items-center gap-4 py-2">
             
             {/* Buscador */}
             <div className="w-75">

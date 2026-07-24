@@ -7,8 +7,8 @@ import { Buscador } from "../Buscador/Buscador";
 export const Header = () => {
     const {getCantidadItems}= useCart();
     return (
-        <header className="d-flex justify-content-between align-baseline gap-5 p-3  text-white">
-            <h2><Link className="text-decoration-none link " to="/">Perfumeria</Link></h2>
+        <header className="d-flex justify-content-between align-baseline gap-5 p-3  text-white bg-blush">
+            <h4 className="start-0"><Link className="text-decoration-none link " to="/">Essence</Link></h4>
             <Buscador></Buscador>
             <div className="d-flex gap-1 align-items-center">
             <Link to={'/admin/dashboard'} className="text-decoration-none text-black">ADMIN</Link>

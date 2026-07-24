@@ -17,9 +17,9 @@ export const CompraExitosa = ({ pedidoId, montoTotal ,items = [], url}) => {
     return (
         <div className="d-flex flex-column align-items-center text-center p-4 bg-light rounded shadow-sm gap-2">
             <div className='container-volver'>
-            <Link to={"/"} className='btn-acento btn-volver'>Volver</Link>
+            <Link to={"/"} className='btn-acento btn-volver text-decoration-none'>Volver</Link>
             </div>
-            <h2 className="text-success">¡Pedido Registrado!</h2>
+            <h2 className="text-salvia">¡Pedido Registrado!</h2>
             {pedidoId && <p className="mb-1">Número de Orden: <strong>#{pedidoId}</strong></p>}
 
             
@@ -35,7 +35,7 @@ export const CompraExitosa = ({ pedidoId, montoTotal ,items = [], url}) => {
                             >
                                 <div>
                                     <strong className="d-block">{item.nombre}</strong>
-                                    <small className="text-muted">
+                                    <small className="text-secundario">
                                         Cant: {item.qty} x ${Number(item.precio).toLocaleString('es-AR')}
                                     </small>
                                 </div>
@@ -49,7 +49,7 @@ export const CompraExitosa = ({ pedidoId, montoTotal ,items = [], url}) => {
             )}
              {montoTotal && (
                 <h4 className="mt-3">
-                    Total a transferir: <span className="text-success">${Number(montoTotal).toLocaleString('es-AR')}</span>
+                    Total a transferir: <span className="text-salvia">${Number(montoTotal).toLocaleString('es-AR')}</span>
                 </h4>
             )}
             <hr className="w-100" />
@@ -73,7 +73,7 @@ export const CompraExitosa = ({ pedidoId, montoTotal ,items = [], url}) => {
 
             
 
-            <p className="text-muted small mt-3">
+            <p className="text-secundario small mt-3">
                 Si no se abrió WhatsApp automáticamente, recordá enviarnos la captura del comprobante al chat.
             </p>
 
@@ -85,7 +85,7 @@ export const CompraExitosa = ({ pedidoId, montoTotal ,items = [], url}) => {
                         href={url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn btn-success btn-lg w-100 d-flex align-items-center justify-content-center gap-2 shadow-sm"
+                        className="btn btn-success text-white btn-lg w-100 d-flex align-items-center justify-content-center gap-2 shadow-sm"
                         
                     >
                         <span> Abrir WhatsApp con mi pedido</span>

@@ -42,8 +42,8 @@ export const TablaPedidosContainer = () => {
     }
 
     return(
-        <div className="m-5">
-        <h3 className="text-center">Lista de pedidos</h3>
+        <div className="mt-3 mb-5">
+        <h4 className="text-center">Lista de pedidos</h4>
         <TablaPedidos setBusqueda={setBusqueda} handleRemovePedido={handleRemovePedido} busqueda={busqueda} pedidos={pedidosFiltrados} onCambiarEstado={handleCambiarEstado}></TablaPedidos>
         </div>
     )

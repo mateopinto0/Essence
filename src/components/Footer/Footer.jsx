@@ -3,7 +3,7 @@ import "./Footer.css"
 export const Footer = () =>{
     return(
          
-        <footer className="footer">
+        <footer className="footer bg-blush-suave text-principal" id="saber-mas">
             <div className="footer-container">
                 <div className="footer-col">
                     <p className="footer-marca">Essence</p>

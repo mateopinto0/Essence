@@ -16,7 +16,7 @@ export const Spinner = ({size=40, fullPage=false}) => {
     if (!fullPage) return spinner;
 
     return (
-        <div className="spinner-container"
+        <div className="spinner-container text-principal"
         >
             {spinner}
         </div>
